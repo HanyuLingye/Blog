@@ -1,0 +1,56 @@
+/* 主页背景（仅作用于.home-page） */
+.home-page {
+  /* 背景图片路径（GitHub Pages 根目录绝对路径） */
+  background-image: url('/assets/images/home-bg.jpg');
+  /* 保持图片比例并覆盖全屏 */
+  background-size: cover;
+  /* 背景固定不随滚动移动 */
+  background-attachment: fixed;
+  /* 背景居中显示 */
+  background-position: center center;
+  /* 防止背景重复 */
+  background-repeat: no-repeat;
+  /* 可选：添加渐变叠加，提升文字可读性 */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('/assets/images/home-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 全局样式 */
+body { padding-top: 50px; }
+
+/* 主页样式 */
+.jumbotron {
+  background-color: #a2cffc;
+  padding: 2rem 1rem;
+}
+.feature-icon { font-size: 3rem; }
+
+/* 关于我样式 */
+.about-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 博客样式 */
+.blog-card { margin-bottom: 2rem; }
+.blog-date { color: #666; font-size: 0.9rem; }
+
+/* 点击动画插件样式（核心） */
+@keyframes riseAndFade {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-50px); opacity: 0; }
+}
+.rise-fade {
+  position: absolute;
+  font-size: 16px;
+  white-space: nowrap;
+  animation: riseAndFade 1s ease forwards;
+  pointer-events: none; /* 避免遮挡点击 */
+  color: #b50a0a; /* 文字颜色（可根据背景调整） */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* 文字阴影，增强可读性 */
+  z-index: 9999; /* 确保在所有元素上方显示 */
+}

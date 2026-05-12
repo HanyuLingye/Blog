@@ -1,3 +1,15 @@
+function getRandomColor() {
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 70%, 50%)`;
+}
+
+function getRandomGradient() {
+  const color1 = getRandomColor();
+  const color2 = getRandomColor();
+  const angle = Math.floor(Math.random() * 360);
+  return `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+}
+
 // 点击动画插件逻辑（所有页面共用）
 document.addEventListener('DOMContentLoaded', function() {
   let phrases = []; // 存储词条数组
@@ -49,8 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 创建动画元素
     const textElement = document.createElement('div');
-    textElement.className = 'rise-fade'; // 应用CSS样式
+    textElement.className = 'rise-fade';
     textElement.textContent = randomPhrase;
+    const gradient = getRandomGradient();
+    textElement.style.background = gradient;
+    textElement.style.webkitBackgroundClip = 'text';
+    textElement.style.backgroundClip = 'text';
+    textElement.style.webkitTextFillColor = 'transparent';
     document.body.appendChild(textElement);
 
     // 定位到点击位置（水平居中，垂直在点击点上方）
